@@ -30,11 +30,11 @@ class SpawnBashShell(ShellExtensionPoint):
 
     def __init__(self):
         super().__init__()
-        satisfies_version(ShellExtensionPoint.EXTENSION_POINT_VERSION, '^1.0')
+        satisfies_version(ShellExtensionPoint.EXTENSION_POINT_VERSION, '^2.0')
         if sys.platform == 'win32' and not use_all_shell_extensions:
             raise SkipExtensionException('Not used on Windows systems')
 
-    def create_prefix_script(self, prefix_path, pkg_names, merge_install):
+    def create_prefix_script(self, prefix_path, merge_install):
         # Use parent of prefix_path to display a pretty workspace name
         workspace_name = 'unknown'
         if len(prefix_path.parts) >= 2:
