@@ -30,7 +30,7 @@ class SpawnBashShell(ShellExtensionPoint):
 
     def __init__(self):
         super().__init__()
-        satisfies_version(ShellExtensionPoint.EXTENSION_POINT_VERSION, '^2.0')
+        satisfies_version(ShellExtensionPoint.EXTENSION_POINT_VERSION, '^2.2')
         if sys.platform == 'win32' and not use_all_shell_extensions:
             raise SkipExtensionException('Not used on Windows systems')
 
@@ -49,6 +49,8 @@ class SpawnBashShell(ShellExtensionPoint):
                 'workspace_name': workspace_name
             })
 
+        return [output_path]
+
     def create_package_script(self, prefix_path, pkg_name, hooks):
         # No package-specific script required
-        pass
+        return []
